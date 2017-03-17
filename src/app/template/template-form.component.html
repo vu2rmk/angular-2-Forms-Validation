@@ -6,8 +6,9 @@
 
  </div>
 
-<form (ngSubmit)="processForm()" *ngIf="!submitted">
+<form (ngSubmit)="processForm()" *ngIf="!submitted" #form= "ngForm">
 
+    {{ form.valid }}
     <div class="form-group" [ngClass]="{ 'has-error': name.invalid && name.touched ,
                                                                 'has-success' : name.valid && name.touched }">
 
@@ -32,7 +33,7 @@
         </span>
     </div>
 
-    <button type="submit" class="btn btn-primary">Save</button>
+    <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Save</button>
 
     {{ diagnostic }}
 
